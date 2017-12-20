@@ -224,7 +224,7 @@ namespace WixToolset.Data
             }
 
             // Convert the data to a string that will persist nicely (nulls as String.Empty).
-            string text = Convert.ToString(this.data, CultureInfo.InvariantCulture);
+            string text = Convert.ToString(this.data, CultureInfo.InvariantCulture).Trim('\0');
             if (this.Column.UseCData)
             {
                 writer.WriteCData(text);
@@ -249,7 +249,7 @@ namespace WixToolset.Data
             }
             else
             {
-                string fieldData = Convert.ToString(this.data, CultureInfo.InvariantCulture);
+                string fieldData = Convert.ToString(this.data, CultureInfo.InvariantCulture).Trim('\0');
 
                 // special idt-specific escaping
                 if (this.Column.EscapeIdtCharacters)
